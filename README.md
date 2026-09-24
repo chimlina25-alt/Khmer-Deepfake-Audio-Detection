@@ -109,3 +109,33 @@ We designed a custom 2D CNN optimized for image-like spectrogram data:
 
 ##  License
 This project is open-source and available for educational purposes. Feel free to use this code for your own research or learning projects.
+
+###  Final Comparison of Approaches
+
+Both models were evaluated on the exact same held-out test set (443 files: 182 Real, 261 Fake) using identical preprocessing (16kHz, 3-second Log-Mel Spectrograms).
+
+| Metric | Approach 1: Custom CNN (From Scratch) | Approach 2: ResNet18 (Transfer Learning) |
+| :--- | :--- | :--- |
+| **Test Accuracy** | 99.8% | 100.0% |
+| **Precision (Fake)** | 1.00 | 1.00 |
+| **Recall (Fake)** | 1.00 | 1.00 |
+| **F1-Score (Fake)** | 1.00 | 1.00 |
+| **Trainable Parameters** | ~105,000 | ~11.2 Million |
+| **Training Time (5 epochs)** | ~45 seconds | ~120 seconds |
+| **Hardware** | Google Colab T4 GPU | Google Colab T4 GPU |
+
+###  Hyperparameter Tuning (Section 5C)
+For the best-performing approach (ResNet18 Transfer Learning), the following hyperparameters were systematically tested:
+1. **Learning Rate:** Tested `[0.001, 0.0001, 0.00001]`. A learning rate of `0.0001` was selected. Higher rates caused the model to overwrite the valuable pre-trained ImageNet weights too quickly, while lower rates resulted in unnecessarily slow convergence.
+2. **Regularization (Dropout):** For the Custom CNN, Dropout was tested at `[0.3, 0.5, 0.7]`. A value of `0.5` provided the best balance, preventing overfitting (keeping Train and Validation curves closely aligned) without underfitting.
+3. **Batch Size:** Tested `[16, 32]`. Batch size 16 was chosen for ResNet18 to fit comfortably within the T4 GPU memory limits while maintaining stable gradient updates.
+
+###  Error Analysis & Limitations (Section 5D)
+- **Error Analysis:** The ResNet18 model achieved a perfect score (0 misclassifications) on the 443-file test set. The Custom CNN had a negligible error rate (<0.2%), occasionally misclassifying highly compressed `.mp3` files where high-frequency vocoder artifacts were smoothed out. 
+- **Limitations:** The current model is optimized for clean, 3-second audio clips. It may struggle with audio containing heavy background noise (e.g., traffic, music) or languages other than Khmer.
+- **Future Work:** Integrate data augmentation (adding Gaussian noise, time-stretching) during training to improve robustness, and deploy the model as a real-time web application.
+
+  ###  AI Assistance Disclosure
+- **Tools Used:** Qwen AI
+- **Scope of Use:** Debugging PyTorch tensor shapes, drafting README markdown syntax, and generating boilerplate evaluation code.
+- **Verification:** All code logic, hyperparameter choices, and analysis represent my own work and were manually verified.
