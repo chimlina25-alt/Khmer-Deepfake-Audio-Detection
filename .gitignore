@@ -1,0 +1,27 @@
+# Model weights (Huge files - DO NOT PUSH)
+*.pth
+*.pt
+*.bin
+
+# Datasets and Audio files
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.ogg
+dataset/
+teacher_dataset_split/
+audio_samples/
+
+# Archives and Outputs
+*.zip
+*.tar.gz
+results/
+
+# Python cache and environments
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.env/
+.DS_Store
