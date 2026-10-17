@@ -56,10 +56,10 @@ Both models were evaluated on the identical held-out test set using PyTorch on a
 ### Confusion Matrices
 
 **Custom CNN:**
-![CustomCNN Confusion Matrix](results/customcnn_confusion_matrix.png)
+![CustomCNN Confusion Matrix](results/customcnn_confusion_matrix (2).png)
 
 **ResNet18:**
-![ResNet18 Confusion Matrix](results/resnet18_confusion_matrix.png)
+![ResNet18 Confusion Matrix](results/resnet18_confusion_matrix (2).png)
 
 ---
 
