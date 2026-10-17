@@ -52,15 +52,13 @@ Both models were evaluated on the identical held-out test set using PyTorch on a
 
 *(See the `results/` folder in this repository for full classification reports and confusion matrix images).*
 
-
 ### Confusion Matrices
 
 **Custom CNN:**
-![CustomCNN Confusion Matrix](results/customcnn_confusion_matrix (2).png)
+![CustomCNN Confusion Matrix](results/customcnn_confusion_matrix.png)
 
 **ResNet18:**
-![ResNet18 Confusion Matrix](results/resnet18_confusion_matrix (2).png)
-
+![ResNet18 Confusion Matrix](results/resnet18_confusion_matrix.png)
 ---
 
 ## ⚙️ 5. Hyperparameter Tuning
