@@ -61,7 +61,7 @@ Both models were evaluated on the identical held-out test set using PyTorch on a
 ![ResNet18 Confusion Matrix](results/resnet18_confusion_matrix.png)
 ---
 
-## ⚙️ 5. Hyperparameter Tuning
+##  5. Hyperparameter Tuning
 For the best-performing approach (ResNet18), the following hyperparameters were empirically tested and selected:
 - **Learning Rate:** Tested `[0.001, 0.0001, 0.00001]`. **`0.0001`** was chosen to prevent "catastrophic forgetting" of the pre-trained ImageNet weights while still allowing the final classification layer to adapt to audio features.
 - **Batch Size:** Tested `[16, 32]`. **`16`** was selected to fit comfortably within the T4 GPU's 16GB VRAM limits while maintaining stable gradient updates.
@@ -69,7 +69,7 @@ For the best-performing approach (ResNet18), the following hyperparameters were 
 
 ---
 
-## 🔍 6. Error Analysis & Limitations
+##  6. Error Analysis & Limitations
 - **Error Analysis:** Both models achieved near-perfect scores on the held-out test set. The ResNet18 model converged significantly faster due to its pre-trained feature extractors. Minor errors in earlier iterations of the Custom CNN occurred on highly compressed `.mp3` files, where compression algorithms smoothed out the high-frequency "vocoder artifacts" that the AI uses to detect fakes.
 - **Limitations:** The model is optimized for clean, 3-second clips. It may struggle with heavy background noise (e.g., traffic, music), overlapping speech, or entirely unseen TTS engines not present in the training distribution (a phenomenon known as **Domain Shift**).
 - **Future Work:** Implement robust data augmentation (Gaussian noise, time-stretching, pitch shifting) and deploy the model as a real-time, user-friendly Gradio web application (code provided in `app.py`).
