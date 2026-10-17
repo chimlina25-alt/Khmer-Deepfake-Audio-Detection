@@ -56,7 +56,8 @@ Both models were evaluated on the identical held-out test set using PyTorch on a
 *(Note: If you are viewing this on GitHub, you can drag and drop your `customcnn_confusion_matrix.png` and `resnet18_confusion_matrix.png` files directly below these lines to display them).*
 
 **Custom CNN:**  
-![Custom CNN Confusion Matrix](results/customcnn_confusion_matrix.png)
+![Custom CNN Confusion Matrix](<img width="600" height="500" alt="customcnn_confusion_matrix" src="https://github.com/user-attachments/assets/9b2f130e-05b1-4a82-907d-da2976e586fc" />
+)
 
 **ResNet18:**  
 ![ResNet18 Confusion Matrix](results/resnet18_confusion_matrix.png)
